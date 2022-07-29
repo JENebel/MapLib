@@ -98,11 +98,6 @@ namespace MapLib
 
                 e.Graphics.DrawImage(mapImage, mapRect);
             }
-
-            if (widthHeightRatio > (double)mapImage.Width / (double)mapImage.Height)
-                e.Graphics.FillRectangle(Brushes.Red, 100, 100, 100, 100);
-            else
-                e.Graphics.FillRectangle(Brushes.Blue, 100, 100, 100, 100);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
