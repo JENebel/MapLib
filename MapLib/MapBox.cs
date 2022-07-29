@@ -218,7 +218,7 @@ namespace MapLib
                     MapScale *= 2;
 
                     mapRect.Width = baseMapSize.Width * MapScale;
-                    mapRect.Height = baseMapSize.Width * MapScale;
+                    mapRect.Height = baseMapSize.Height * MapScale;
 
                     mapRect.X -= e.X - mapRect.X;
                     mapRect.Y -= e.Y - mapRect.Y;
@@ -229,7 +229,7 @@ namespace MapLib
                     MapScale /= 2;
 
                     mapRect.Width = baseMapSize.Width * MapScale;
-                    mapRect.Height = baseMapSize.Width * MapScale;
+                    mapRect.Height = baseMapSize.Height * MapScale;
 
                     mapRect.X += (int)((e.X - mapRect.X) / 2);
                     mapRect.Y += (int)((e.Y - mapRect.Y) / 2);
