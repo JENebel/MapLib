@@ -67,15 +67,14 @@ namespace MapLib
 
         public void ResetView()
         {
-            double mapRatio = (double)mapImage.Width / (double)mapImage.Height;
-            if (widthHeightRatio > mapRatio)
+            if (widthHeightRatio > (double)mapImage.Width / (double)mapImage.Height)
             {
-                int width = (int)(Width / widthHeightRatio);
+                int width = (int)(double)(mapImage.Width * ((double)Height / (double)mapImage.Height));
                 mapRect = new Rectangle((Width - width) / 2, 0, width, Height);
             }
             else
             {
-                int height = (int)(Height * widthHeightRatio);
+                int height = (int)((double)mapImage.Height * ((double)Width / (double)mapImage.Width));
                 mapRect = new Rectangle(0, (Height - height) / 2, Width, height);
             }
             baseMapSize = new Size(mapRect.Width, mapRect.Height);
@@ -99,6 +98,11 @@ namespace MapLib
 
                 e.Graphics.DrawImage(mapImage, mapRect);
             }
+
+            if (widthHeightRatio > (double)mapImage.Width / (double)mapImage.Height)
+                e.Graphics.FillRectangle(Brushes.Red, 100, 100, 100, 100);
+            else
+                e.Graphics.FillRectangle(Brushes.Blue, 100, 100, 100, 100);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
