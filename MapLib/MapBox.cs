@@ -65,6 +65,14 @@ namespace MapLib
             MouseWheel += OnScroll;
         }
 
+        private void MapBox_Load(object sender, EventArgs e)
+        {
+            ResetRatio();
+            ResetView();
+            SetBtnSize();
+            Invalidate();
+        }
+
         public void ResetView()
         {
             if (widthHeightRatio > (double)mapImage.Width / (double)mapImage.Height)
@@ -79,6 +87,7 @@ namespace MapLib
             }
             baseMapSize = new Size(mapRect.Width, mapRect.Height);
             SetPixelSize();
+            MapScale = 1;
             Invalidate();
         }
 
