@@ -32,7 +32,10 @@ namespace MapLib
 
         public bool ResetViewOnNewImage { get; set; } = true;
         public int MapScale { get; private set; } = 1;
-        public int MaxZoom { get; private set; } = 8;
+        public int MaxZoom { get; set; } = 8;
+        public bool CanZoomOnScroll { get; set; } = true;
+        public bool ShowResetButton { get; set; } = true;
+
         public Bitmap MapImage
         {
             get
@@ -96,17 +99,16 @@ namespace MapLib
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
             e.Graphics.Clear(BackColor);
-            {
-                if (mapImage == null)
-                {
-                    resetViewBtn.Visible = false;
-                    return;
-                }
-                else
-                    resetViewBtn.Visible = true;
 
-                e.Graphics.DrawImage(mapImage, mapRect);
+            if (mapImage == null || !ShowResetButton)
+            {
+                resetViewBtn.Visible = false;
             }
+            else
+                resetViewBtn.Visible = true;
+
+            if (mapImage == null) return;
+            e.Graphics.DrawImage(mapImage, mapRect);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -208,7 +210,7 @@ namespace MapLib
 
         private void OnScroll(object sender, MouseEventArgs e)
         {
-            if (MouseOverMap(e))
+            if (MouseOverMap(e) && CanZoomOnScroll)
             {
                 if(e.Delta > 0)
                     Zoom(1, e);
@@ -271,6 +273,11 @@ namespace MapLib
                 && loc.Y >= 0
                 && loc.X < mapImage.Width
                 && loc.Y < mapImage.Height;
+        }
+
+        private void MapBox_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -50,7 +50,7 @@
             this.Controls.Add(this.resetViewBtn);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MapBox";
-            this.Size = new System.Drawing.Size(315, 180);
+            this.Size = new System.Drawing.Size(450, 300);
             this.Load += new System.EventHandler(this.MapBox_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapBox_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapBox_MouseMove);
