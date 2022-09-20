@@ -35,7 +35,7 @@
             // 
             this.resetViewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.resetViewBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.resetViewBtn.Location = new System.Drawing.Point(285, 154);
+            this.resetViewBtn.Location = new System.Drawing.Point(415, 269);
             this.resetViewBtn.Margin = new System.Windows.Forms.Padding(1);
             this.resetViewBtn.Name = "resetViewBtn";
             this.resetViewBtn.Size = new System.Drawing.Size(28, 24);

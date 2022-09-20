@@ -78,6 +78,7 @@ namespace MapLib
 
         public void ResetView()
         {
+            if (mapImage == null) return;
             if (widthHeightRatio > (double)mapImage.Width / (double)mapImage.Height)
             {
                 int width = (int)(double)(mapImage.Width * ((double)Height / (double)mapImage.Height));
@@ -108,6 +109,7 @@ namespace MapLib
                 resetViewBtn.Visible = true;
 
             if (mapImage == null) return;
+
             e.Graphics.DrawImage(mapImage, mapRect);
         }
 
@@ -273,11 +275,6 @@ namespace MapLib
                 && loc.Y >= 0
                 && loc.X < mapImage.Width
                 && loc.Y < mapImage.Height;
-        }
-
-        private void MapBox_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
