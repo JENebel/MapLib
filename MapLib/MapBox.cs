@@ -70,15 +70,14 @@ namespace MapLib
 
         public void ResetView()
         {
-            double mapRatio = (double)mapImage.Width / (double)mapImage.Height;
-            if (widthHeightRatio > mapRatio)
+            if (widthHeightRatio > (double)mapImage.Width / (double)mapImage.Height)
             {
-                int width = (int)(Width / widthHeightRatio);
+                int width = (int)(double)(mapImage.Width * ((double)Height / (double)mapImage.Height));
                 mapRect = new Rectangle((Width - width) / 2, 0, width, Height);
             }
             else
             {
-                int height = (int)(Height * widthHeightRatio);
+                int height = (int)((double)mapImage.Height * ((double)Width / (double)mapImage.Width));
                 mapRect = new Rectangle(0, (Height - height) / 2, Width, height);
             }
             baseMapSize = new Size(mapRect.Width, mapRect.Height);
@@ -221,7 +220,7 @@ namespace MapLib
                     MapScale *= 2;
 
                     mapRect.Width = baseMapSize.Width * MapScale;
-                    mapRect.Height = baseMapSize.Width * MapScale;
+                    mapRect.Height = baseMapSize.Height * MapScale;
 
                     mapRect.X -= e.X - mapRect.X;
                     mapRect.Y -= e.Y - mapRect.Y;
@@ -232,7 +231,7 @@ namespace MapLib
                     MapScale /= 2;
 
                     mapRect.Width = baseMapSize.Width * MapScale;
-                    mapRect.Height = baseMapSize.Width * MapScale;
+                    mapRect.Height = baseMapSize.Height * MapScale;
 
                     mapRect.X += (int)((e.X - mapRect.X) / 2);
                     mapRect.Y += (int)((e.Y - mapRect.Y) / 2);
